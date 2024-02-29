@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/timeline', TimelineController::class)->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/timeline', TimelineController::class)->middleware(['auth', 'verified'])->name('timeline');
 
 Route::post('tweets', TweetStoreController::class)->name('tweets.store');
 Route::get('tweets/{id}/edit', TweetEditController::class)->name('tweets.edit');

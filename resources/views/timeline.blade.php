@@ -23,7 +23,9 @@
                     <h2 class="text-xl font-bold">{{ $tweet->user->name }}</h2>
                     <p>{{ $tweet->content }}</p>
                     <div class="text-end text-xs">
+                      @can('update', $tweet)
                       <a href="{{ route('tweets.edit', $tweet->id) }}" class="link link-hover text-blue-400 me-5">Edit</a>
+                      @endcan
                       <span class="text-xs">{{ $tweet->created_at->diffForHumans() }}</span>
                     </div>
                   </div>
