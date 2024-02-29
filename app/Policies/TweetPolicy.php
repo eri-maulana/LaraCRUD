@@ -46,7 +46,7 @@ class TweetPolicy
      */
     public function delete(User $user, Tweet $tweet): bool
     {
-        //
+        return $user->id == $tweet->user_id;
     }
 
     /**

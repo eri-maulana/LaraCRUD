@@ -22,11 +22,18 @@
                   <div class="card-body">
                     <h2 class="text-xl font-bold">{{ $tweet->user->name }}</h2>
                     <p>{{ $tweet->content }}</p>
-                    <div class="text-end text-xs">
+                    <div class="text-end text-xs flex justify-end items-center ">
                       @can('update', $tweet)
-                      <a href="{{ route('tweets.edit', $tweet->id) }}" class="link link-hover text-blue-400 me-5">Edit</a>
+                      <a href="{{ route('tweets.edit', $tweet->id) }}" class="btn btn-sm btn-info link link-hover text-blue-400 me-5">Edit</a>
                       @endcan
-                      <span class="text-xs">{{ $tweet->created_at->diffForHumans() }}</span>
+                      @can('delete', $tweet)
+                      <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post" class="block">
+                      @csrf
+                      @method('delete')
+                      <button type="submit" class="btn btn-sm btn-error me-5"> Hapus</button>
+                      </form>
+                      @endcan
+                      <span class="text-xs italic ">{{ $tweet->created_at->diffForHumans() }}</span>
                     </div>
                   </div>
                 </div>
