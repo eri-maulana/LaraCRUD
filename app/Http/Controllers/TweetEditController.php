@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Tweet;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class TweetEditController extends Controller
+{
+    public function __invoke($id): View
+    {
+        return view('tweets.edit', [
+            'tweet' => Tweet::find($id)
+        ]);
+    }
+}

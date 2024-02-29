@@ -22,7 +22,10 @@
                   <div class="card-body">
                     <h2 class="text-xl font-bold">{{ $tweet->user->name }}</h2>
                     <p>{{ $tweet->content }}</p>
-                    <p class="text-end text-xs">{{ $tweet->created_at->diffForHumans() }}</p>
+                    <div class="text-end text-xs">
+                      <a href="{{ route('tweets.edit', $tweet->id) }}" class="link link-hover text-blue-400 me-5">Edit</a>
+                      <span class="text-xs">{{ $tweet->created_at->diffForHumans() }}</span>
+                    </div>
                   </div>
                 </div>
               @endforeach
